@@ -100,6 +100,6 @@ int random_between(int min, int max) {
 }
 
 int file_exists(char * filename) {
-    return access(filename, F_OK);
+    return access(filename, F_OK) != -1;
 }
 
