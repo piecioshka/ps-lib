@@ -111,3 +111,32 @@ void err(char * s1, char * s2) {
     exit(1);
 }
 
+int file_byte(char * filename) {
+    struct stat file;
+    stat(filename, &file);
+    return file.st_size;
+}
+
+int is_dot(char * name) {
+    int single = strcmp(name, ".") == 0;
+    int dbl = strcmp(name, "..") == 0;
+    return single || dbl;
+}
+
+int is_dir(char * filename) {
+    struct stat file;
+    stat(filename, &file);
+    return file.st_mode & S_IFDIR;
+}
+
+int is_file(char * filename) {
+    struct stat file;
+    stat(filename, &file);
+    return file.st_mode & S_IFREG;
+}
+
+int is_symbolic(char * filename) {
+    struct stat file;
+    stat(filename, &file);
+    return file.st_mode & S_IFLNK;
+}
