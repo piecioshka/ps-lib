@@ -7,6 +7,8 @@
 #include <pwd.h>
 #include <grp.h>
 
+#define _XOPEN_SOURCE       /* See feature_test_macros(7) */
+
 void mode_to_letters(int mode, char str[]) {
   strcpy( str, "----------" ); /* default=no perms */
   if (S_ISDIR(mode) ) str[0] = 'd'; /* directory? */
