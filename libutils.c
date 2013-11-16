@@ -140,3 +140,10 @@ int is_symbolic(char * filename) {
     stat(filename, &file);
     return file.st_mode & S_IFLNK;
 }
+
+int is_socket(char * filename) {
+    struct stat file;
+    stat(filename, &file);
+    return file.st_mode & S_IFSOCK;
+}
+
